@@ -1,0 +1,65 @@
+Data should be organized as an array of dictionaries(objects):
+1 = name
+2= lname
+3= class
+6 = period
+7 = teacher
+11 = grade
+CV
+{
+    "firstname":<string>,
+    "lastname":<string>,
+    "grade":<int>,
+    "schedule": {
+                    "perA": {
+                        subject: <String>,
+                        teacher: <String>
+                    },
+                    "perB": {
+                        subject: <String>,
+                        teacher: <String>
+                    },
+                    ....
+                }
+}
+
+For Joseph:
+* Read a csv file in python
+* Split by \n
+* Split by comma (organized as 2D array - table)
+* Removing array elements that are duplicate
+    (if firstname, lastname, period, grade are identical)
+* Create a new 2D array (table) that contains only necessary columns
+        columns:    firstname, lastname, subject, grade, teacherlastname
+
+
+http://stackoverflow.com/questions/7682561/how-do-i-split-a-line-by-commas-but-ignore-commas-within-quotes-python
+
+placeholder: 
+
+def create_dictionaries(test_data):
+    split_data_by_line = []
+    split_data_by_line = test_data.split("\n")
+    print (split_data_by_line)
+    test_dictionary = {'fname' : "", 'lname' : "", "class": "", "period" : "", "teacher": "", "grade" : ""}    
+    for item in split_data_by_line:
+        current_class = item.split(",")
+        print (current_class)
+        while "" in current_class:
+            current_class.remove("")
+        print (current_class)
+
+
+FINAL GOAL for joseph: export dictionary as json file
+
+order of things for jeffrey/faa:
+* implement autocomplete
+* allow user to type name into input element, add it to an array and clear the input box when enter is pressed
+* create a table based on the array
+* write a function that will take the current time and return the current period
+
+
+-fix the autocomplete so that it chooses first element automatically //DONE
+-Fix the addition of the same student multiple times //
+-arrange the table by class//
+-remove button function //
