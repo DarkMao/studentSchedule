@@ -58,8 +58,3 @@ order of things for jeffrey/faa:
 * create a table based on the array
 * write a function that will take the current time and return the current period
 
-
--fix the autocomplete so that it chooses first element automatically //DONE
--Fix the addition of the same student multiple times //
--arrange the table by class//
--remove button function //

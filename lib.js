@@ -21,12 +21,12 @@ function generateTables(perString,namesGrades,selected) {
             tableHTML += generateTableHead(per);
             for (var i = 0; i < selected.length; i++) {
                 if (selected[i].schedule[perFull]) {
-                    tableHTML += ("<tr><th scope=\"row\">" +
-                        selected[i].firstname + "</th><th>" + selected[i].lastname + "</th><th>" +
-                        selected[i].grade + "</th><th></th><th>" + selected[i].schedule[perFull].subject +
-                        "</th><th>" + selected[i].schedule[perFull].teacher +
-                        "</th><th><button class=\"but\" " +
-                        "data-id=\"" + selected[i].id + "\">X</button></th></tr>");
+                    tableHTML += ("<tr><td scope=\"row\">" +
+                        selected[i].firstname + "</td><td>" + selected[i].lastname + "</td><td>" +
+                        selected[i].grade + "</td><td></td><td>" + selected[i].schedule[perFull].subject +
+                        "</td><td>" + selected[i].schedule[perFull].teacher +
+                        "</td><td><button class=\"but\" " +
+                        "data-id=\"" + selected[i].id + "\">X</button></td></tr>");
                 }
                 // console.log(table);
                 // console.log(showPeriods);

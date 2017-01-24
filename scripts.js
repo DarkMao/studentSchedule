@@ -2,7 +2,7 @@
 function generateTableHead(per) {
     var title = ['First Name', 'Last Name', 'Grade', 'Room', 'Class', 'Teacher', 'Remove'];
     var width = ["15", "15", "10", "10", "25", "25"];
-    var html = `<tr class="thead-inverse"><th rowspan="100%" style="vertical-align:middle;">${per}</th>`;
+    var html = `<tr class="thead-inverse"><th rowspan="100%" id="rowSpanper" style="vertical-align:middle;">${per}</th>`;
     for (var x = 0; x < title.length; x++) {
         html += `<th style="width:${width[x]}%;">${title[x]}</th>`;
     }
