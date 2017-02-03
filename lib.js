@@ -18,6 +18,11 @@ function generateTables(perString,namesGrades,selected) {
         var tableHTML = "<tbody>";
         var table = $("#table" + per)[0];
         if (showPeriods[perFull]) {
+            selected.sort(function (a, b){
+                var class1 = a.schedule[perFull].subject;
+                var class2 = b.schedule[perFull].subject;
+                return class1 > class2 ? 1 : -1;
+            });
             tableHTML += generateTableHead(per);
             for (var i = 0; i < selected.length; i++) {
                 if (selected[i].schedule[perFull]) {

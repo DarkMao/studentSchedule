@@ -63,7 +63,8 @@ $.getJSON('data.json', function(data) {
     $("#studentName").autocomplete({
         source: namesGrades, // fixed so that auto focuses first element on pressing enter
         autoFocus: true,
-
+        delay: 0,
+        minLength:2
     });
 
 
@@ -73,36 +74,9 @@ $.getJSON('data.json', function(data) {
         showPeriods[d] = !showPeriods[d];
         var perString = d.replace('per', '');
         generateTables(perString,namesGrades,selected);
-        // var tableHTML = "<tbody>";
-        // var table = $("#table" + perString)[0];
-
-        // generateTables(perString);
-
-        // if (showPeriods[d]) {
-        //     tableHTML += generateTableHead(perString);
-        //     for (var i = 0; i < selected.length; i++) {
-        //         if (selected[i].schedule[d]) {
-        //             tableHTML += ("<tr><th scope=\"row\">" +
-        //                 selected[i].firstname + "</th><th>" + selected[i].lastname + "</th><th>" +
-        //                 selected[i].grade + "</th><th></th><th>" + selected[i].schedule[d].subject +
-        //                 "</th><th>" + selected[i].schedule[d].teacher +
-        //                 "</th><th><button class=\"but\" " +
-        //                 "data-id=\"" + selected[i].id + "\">X</button></th></tr>");
-        //         }
-        //         console.log(table);
-        //         console.log(showPeriods);
-        //     }
-        // }
-
-        // var deleteButtons = Array.prototype.slice.call(document.querySelectorAll('.but'));
-        // deleteButtons.forEach(button => {
-        //     console.log(this);
-        // })
-
-        // table.innerHTML = tableHTML + "</tbody>";
-
     });
 });
+
 
 
 var times = [{
@@ -116,15 +90,15 @@ var times = [{
 }, {
     per: "C",
     start: [12, 19],
-    end: [1, 05]
+    end: [13, 05]
 }, {
     per: "D",
-    start: [1, 06],
-    end: [1, 52]
+    start: [13, 06],
+    end: [13, 52]
 }, {
     per: "E",
-    start: [1, 53],
-    end: [2, 39]
+    start: [13, 53],
+    end: [14, 39]
 }, {
     per: "F",
     start: [9, 58],
@@ -134,9 +108,54 @@ var times = [{
     start: [11, 31],
     end: [12, 18]
 }];
-var d = new Date();
-var day = d.getDay() - 1;
-var temp = times[4].per;
-times[4].per = times[day].per;
-times[day].per = temp;
-console.log(times);
+
+$('#per-now').click(function(){
+    var now = new Date();
+    var day = now.getDay() - 1;
+    var temp = times[4].per;
+    times[4].per = times[day].per;
+    times[day].per = temp;
+    var currentPeriods = [];
+    times.forEach(function(time){
+        // var nowMin = now.getMinutes();
+        // var nowHours = now.getHours();
+        var nowMin = 31;
+        var nowHours = 11;
+        var nowTime = nowHours * 60 + nowMin;
+        var perStart = time.start[0] * 60 + time.start[1];
+        var perEnd = time.end[0] * 60 + time.end[1];
+            
+        // if (time.start[0] <= nowHours && nowHours <= time.end[0] &&
+            // time.start[1] <= nowMin && nowMin <= time.end[1]){
+        if (perStart <= nowTime && nowTime <= perEnd){
+            
+            if (time.per === "F"){
+                currentPeriods.push("FRed");
+                currentPeriods.push("FGrey");
+            }
+            if(time.per === "G"){
+                currentPeriods.push("GRed");
+                currentPeriods.push("GGrey");
+            }
+            currentPeriods.push(time.per);
+        }
+    });
+    console.log(times);
+    console.log(currentPeriods);
+});
+
+$('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
+var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+});
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0}, 1);
+	return false;
+});

@@ -2,15 +2,11 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="bootstrap-theme.css">-->
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="init.js"></script>
-    <!--<script src="tether/js/utils.js"></script>-->
-    <!--<script src="tether/js/tether.js"></script>-->
-    <!--<script src="bootstrap.js"></script>-->
     <title>Schedule Seacher</title>
 </head>
 
@@ -19,8 +15,9 @@
         <div class ="Fixed">
         <!--<script src="path/to/jquery.easy-autocomplete.min.js"></script>-->
         <form id="a" onSubmit="return false;">
-            Name: <input type="text" class="studentName" id="studentName">
-            <button type="button" class="period btn" id="per-now">Now</button>
+            <label for="studentName" class="label">Name:</label>
+            <input type="text" class="studentName" id="studentName" placeholder="Name">
+            <button type="button" class="btn" id="per-now">Now</button>
             <button type="button" class="period btn" data-tag="perA" id="per-A">A</button>
             <button type="button" class="period btn" data-tag="perB" id="per-B">B</button>
             <button type="button" class="period btn" data-tag="perC" id="per-C">C</button>
@@ -38,10 +35,9 @@
     </header>
     <br><br>
     <br><br>
-
-    <!--<script type="text/javascript" src="jquery.autocomplete.js"></script>-->
     <script type="text/javascript" src="lib.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
+    <a href="#" class="back-to-top">Back to Top</a>
 </body>
 
 </html>
