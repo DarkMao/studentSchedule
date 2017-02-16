@@ -41,6 +41,7 @@ def create_dictionaries():
             
     # for x in range(10):
     #     pp.pprint(students[x])
+    print (students)
     return students
 
 data = create_dictionaries()

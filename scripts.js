@@ -27,15 +27,24 @@ var showPeriods = {
     perGGrey: false,
     perGRed: false
 };
+var dir;
+var namesGrades = [];
+var selected = [];
+
+$.getJSON('directoryfinal.json', function(data){
+    dir = data;
+    console.log(dir);
+});
 $.getJSON('data.json', function(data) {
-    var namesGrades = [];
-    var selected = [];
     $('#studentName').keypress(function(event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
             var studentNameGrade = document.getElementById('studentName').value;
             var studentObj = data.filter(entry => entry.id === studentNameGrade)[0];
-
+            console.log(studentNameGrade);
+            if(studentNameGrade === "Jeffrey Richiez 12"){
+                window.alert("I see, you are adding the creator");
+            }
             if (studentObj && $.inArray(studentObj, selected) < 0) {
                 selected.push(studentObj);
                 // event.preventDefault();
@@ -44,7 +53,7 @@ $.getJSON('data.json', function(data) {
             }
             $('#studentName').val("");
             console.log(selected);
-            generateTables("ALL",namesGrades,selected);
+            generateTables("ALL",namesGrades,selected,dir);
         }
     });
     
@@ -54,7 +63,6 @@ $.getJSON('data.json', function(data) {
         console.log(selected);
         generateTables("ALL",namesGrades,selected);
     });
-        
     //autocomplete
     for (var i = 0; i < data.length; i++) {
         namesGrades.push(data[i].firstname + " " + data[i].lastname + " " + data[i].grade);
@@ -76,8 +84,6 @@ $.getJSON('data.json', function(data) {
         generateTables(perString,namesGrades,selected);
     });
 });
-
-
 
 var times = [{
     per: "A",
@@ -117,10 +123,10 @@ $('#per-now').click(function(){
     times[day].per = temp;
     var currentPeriods = [];
     times.forEach(function(time){
-        // var nowMin = now.getMinutes();
-        // var nowHours = now.getHours();
-        var nowMin = 31;
-        var nowHours = 11;
+        var nowMin = now.getMinutes();
+        var nowHours = now.getHours();
+/*        var nowMin = 50;
+        var nowHours = 11;*/
         var nowTime = nowHours * 60 + nowMin;
         var perStart = time.start[0] * 60 + time.start[1];
         var perEnd = time.end[0] * 60 + time.end[1];
@@ -142,20 +148,51 @@ $('#per-now').click(function(){
     });
     console.log(times);
     console.log(currentPeriods);
+    currentPeriods.forEach(function(per){
+        $('#per-'+per).addClass('clicked');
+        showPeriods['per'+per] = true;
+        console.log(selected);
+        generateTables(per,namesGrades,selected);
+    })
 });
 
-$('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
-var amountScrolled = 300;
+// $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
+// var amountScrolled = 300;
 
+// $(window).scroll(function() {
+// 	if ( $(window).scrollTop() > amountScrolled ) {
+// 		$('a.back-to-top').fadeIn('slow');
+// 	} else {
+// 		$('a.back-to-top').fadeOut('slow');
+// 	}
+// });
+// $('back-to-top').click(function() {
+// 	$("html, body").animate({ scrollTop: 0 }, 600); 
+// });
+// ===== Scroll to Top ==== 
 $(window).scroll(function() {
-	if ( $(window).scrollTop() > amountScrolled ) {
-		$('a.back-to-top').fadeIn('slow');
-	} else {
-		$('a.back-to-top').fadeOut('slow');
-	}
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
 });
-$('a.back-to-top').click(function() {
-	$('html, body').animate({
-		scrollTop: 0}, 1);
-	return false;
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
 });
+$.tooltipster.setDefaults({
+    side: 'left',
+});
+$(document).ready(function() {
+            $('.tooltipstered').tooltipster();
+            animation: 'fade';
+            delay: 200;
+            theme: 'tooltipster-punk';
+            trigger: 'click';
+            maxWidth: 900;
+            speed: 300;
+            interactive: true;
+});
+$('#demo-theme').tooltip({show: {effect:"none", delay:0}});
