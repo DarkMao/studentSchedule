@@ -1,4 +1,6 @@
 /* global $ */
+/* global barrel*/
+/*global swal */
 function generateTableHead(per) {
     var title = ['First Name', 'Last Name', 'Grade', 'Room', 'Class', 'Teacher', 'Remove'];
     var width = ["15", "15", "10", "10", "25", "25"];
@@ -31,10 +33,18 @@ var dir;
 var namesGrades = [];
 var selected = [];
 
-$.getJSON('directoryfinal.json', function(data){
+$.getJSON('directoryfinal.json', function(data) {
     dir = data;
-    console.log(dir);
 });
+
+function barrel() {
+    var css = document.createElement('style');
+    css.type = 'text/css';
+    css.innerHTML = '@keyframes roll {100%  {transform:rotate(360deg)}}@-moz-keyframes roll{100%25{-moz-transform:rotate(360deg);}}@-o-keyframes roll{100%25{-o-transform:rotate(360deg);}}@-webkit-keyframes roll{100%25{-webkit-transform:rotate(360deg);}}body{-moz-animation-name:roll;-moz-animation-duration:4s;-moz-animation-iteration-count:1;-o-animation-name:roll;-o-animation-duration:4s;-o-animation-iteration-count:1;-webkit-animation-name:roll;-webkit-animation-duration:4s;-webkit-animation-iteration-count:1;}';
+    document.getElementsByTagName('head')[0].appendChild(css)
+    return css.innerHTML;
+}
+var wasjeff = false;
 $.getJSON('data.json', function(data) {
     $('#studentName').keypress(function(event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -42,26 +52,29 @@ $.getJSON('data.json', function(data) {
             var studentNameGrade = document.getElementById('studentName').value;
             var studentObj = data.filter(entry => entry.id === studentNameGrade)[0];
             console.log(studentNameGrade);
-            if(studentNameGrade === "Jeffrey Richiez 12"){
-                window.alert("I see, you are adding the creator");
-            }
+                if (studentNameGrade === "Jeffrey Richiez 12" && wasjeff == false) {
+                    swal("WOOOAH");
+                    barrel();
+                    wasjeff= true;
+                }
             if (studentObj && $.inArray(studentObj, selected) < 0) {
                 selected.push(studentObj);
                 // event.preventDefault();
-            } else {
+            }
+            else {
                 console.warn(`Warning: ${studentNameGrade} already exists or not found`);
             }
             $('#studentName').val("");
             console.log(selected);
-            generateTables("ALL",namesGrades,selected,dir);
+            generateTables("ALL", namesGrades, selected, dir);
         }
     });
-    
+
     $('body').on('click', '.but', function() {
         var idToDelete = $(this).data('id');
         selected = selected.filter(s => s.id !== idToDelete);
         console.log(selected);
-        generateTables("ALL",namesGrades,selected);
+        generateTables("ALL", namesGrades, selected);
     });
     //autocomplete
     for (var i = 0; i < data.length; i++) {
@@ -72,7 +85,7 @@ $.getJSON('data.json', function(data) {
         source: namesGrades, // fixed so that auto focuses first element on pressing enter
         autoFocus: true,
         delay: 0,
-        minLength:2
+        minLength: 2
     });
 
 
@@ -81,7 +94,7 @@ $.getJSON('data.json', function(data) {
         $(this).toggleClass("clicked");
         showPeriods[d] = !showPeriods[d];
         var perString = d.replace('per', '');
-        generateTables(perString,namesGrades,selected);
+        generateTables(perString, namesGrades, selected);
     });
 });
 
@@ -115,44 +128,42 @@ var times = [{
     end: [12, 18]
 }];
 
-$('#per-now').click(function(){
+$('#per-now').click(function() {
     var now = new Date();
     var day = now.getDay() - 1;
     var temp = times[4].per;
     times[4].per = times[day].per;
     times[day].per = temp;
     var currentPeriods = [];
-    times.forEach(function(time){
+    times.forEach(function(time) {
         var nowMin = now.getMinutes();
         var nowHours = now.getHours();
-/*        var nowMin = 50;
-        var nowHours = 11;*/
+        /*        var nowMin = 50;
+                var nowHours = 11;*/
         var nowTime = nowHours * 60 + nowMin;
         var perStart = time.start[0] * 60 + time.start[1];
         var perEnd = time.end[0] * 60 + time.end[1];
-            
+
         // if (time.start[0] <= nowHours && nowHours <= time.end[0] &&
-            // time.start[1] <= nowMin && nowMin <= time.end[1]){
-        if (perStart <= nowTime && nowTime <= perEnd){
-            
-            if (time.per === "F"){
+        // time.start[1] <= nowMin && nowMin <= time.end[1]){
+        if (perStart <= nowTime && nowTime <= perEnd) {
+
+            if (time.per === "F") {
                 currentPeriods.push("FRed");
                 currentPeriods.push("FGrey");
             }
-            if(time.per === "G"){
+            if (time.per === "G") {
                 currentPeriods.push("GRed");
                 currentPeriods.push("GGrey");
             }
             currentPeriods.push(time.per);
         }
     });
-    console.log(times);
-    console.log(currentPeriods);
-    currentPeriods.forEach(function(per){
-        $('#per-'+per).addClass('clicked');
-        showPeriods['per'+per] = true;
+    currentPeriods.forEach(function(per) {
+        $('#per-' + per).addClass('clicked');
+        showPeriods['per' + per] = true;
         console.log(selected);
-        generateTables(per,namesGrades,selected);
+        generateTables(per, namesGrades, selected);
     })
 });
 
@@ -171,28 +182,15 @@ $('#per-now').click(function(){
 // });
 // ===== Scroll to Top ==== 
 $(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-        $('#return-to-top').fadeIn(200);    // Fade in the arrow
-    } else {
-        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200); // Fade in the arrow
+    }
+    else {
+        $('#return-to-top').fadeOut(200); // Else fade out the arrow
     }
 });
-$('#return-to-top').click(function() {      // When arrow is clicked
+$('#return-to-top').click(function() { // When arrow is clicked
     $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
+        scrollTop: 0 // Scroll to top of body
     }, 500);
 });
-$.tooltipster.setDefaults({
-    side: 'left',
-});
-$(document).ready(function() {
-            $('.tooltipstered').tooltipster();
-            animation: 'fade';
-            delay: 200;
-            theme: 'tooltipster-punk';
-            trigger: 'click';
-            maxWidth: 900;
-            speed: 300;
-            interactive: true;
-});
-$('#demo-theme').tooltip({show: {effect:"none", delay:0}});

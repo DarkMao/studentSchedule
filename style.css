@@ -69,7 +69,7 @@
   outline:none !important;
 }
 body {
-    background-image: url("images/4k.jpg");/*Normal = http://zonewallpaper.net/wp-content/uploads/2016/11/4K-Wallpapers-HD.jpg*/
+    background-image: url("images/4k-min.jpg");/*Normal = http://zonewallpaper.net/wp-content/uploads/2016/11/4K-Wallpapers-HD.jpg*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -272,8 +272,7 @@ td.text-right {
 
 .Fixed
 {
-    position: fixed;
-    
+    padding: 5px;
 }
 .btn:focus {
     outline:none !important;
@@ -313,26 +312,7 @@ div{
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color:rgba(187, 190, 193, 0.9);
 }
-/*a.back-to-top {*/
-/*    display: none;*/
-/*    width: 30;*/
-/*    height: 30px;*/
-/*    text-indent: -9999px;*/
-/*    position: fixed;*/
-/*    z-index: 999;*/
-/*    right: auto;*/
-/*    bottom: 1px;*/
-/*    background: #51fff9 url("images/arrow.png") no-repeat center 43% ;*/
-/*    background-color:#51fff9; */
-/*    background-size: contain;*/
-/*    -webkit-border-radius: 30px;*/
-/*    -moz-border-radius: 30px;*/
-/*    border-radius: 60px;*/
-/*    opacity: 0.3;*/
-/*}*/
-/*a.back-to-top:hover{*/
-/*  opacity:0.8;*/
-/*}*/
+
 .centered-table {
    margin-left: auto;
    margin-right: auto;
@@ -376,40 +356,6 @@ div{
 #return-to-top:hover i {
     color: #fff;
     top: 5px;
-}
-#demo-theme {
-  outline:none !important;
-    display: block;
-    border: 3px solid #ff5e3c;
-    border-radius: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    width: 5em;
-    height: 5em;
-    background: #ff5e3c;
-    color: #fff;
-    font-size: 0.6em;
-    line-height: 1em;
-    font-weight: 700;
-    padding: 1.8em 0 0 0;
-    text-align: center;
-    margin: -1.4em 1em 0 0;
-    text-transform: uppercase;
-    float: right;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    position: relative;
-    bottom: -15;
-
-}
-#demo-theme:hover {
-    background: #fff;
-    color: #5d6365;
-    border: 3px solid #5d6365;
-    cursor: pointer;
 }
 
 .hint { position: relative; display: inline-block; }
@@ -466,17 +412,6 @@ div{
 	margin-top: 6px;
 }
 
-#help{
-  outline:none !important;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  max-height: 50px;
-  border: 1px solid red;
-}
-#help:hover{
-  background-color: white;
-}
 .hint, [data-hint] {
   position: relative;
   display: inline-block;
@@ -513,4 +448,22 @@ div{
     font-size: 12px;
     line-height: 12px;
     white-space: pre;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); }
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); 
+  }
+
+#help{
+  outline:none !important;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  background-color:white;
+  opacity: 0.8;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+#help:hover{
+  background-color: rgb(56, 56, 56);
+}
+

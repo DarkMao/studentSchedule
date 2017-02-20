@@ -1,14 +1,22 @@
 <html>
 <head>
+<!-- __      .___  ___.      ___        ______   -->
+<!--|  |     |   \/   |     /   \      /  __  \  -->
+<!--|  |     |  \  /  |    /  ^  \    |  |  |  | -->
+<!--|  |     |  |\/|  |   /  /_\  \   |  |  |  | -->
+<!--|  `----.|  |  |  |  /  _____  \  |  `--'  | -->
+<!--|_______||__|  |__| /__/     \__\  \______/  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="tooltipster-master/dist/css/tooltipster.bundle.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="init.js"></script>
-    <script type="text/javascript" src="tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <link rel="stylesheet" href="print-style.css" type="text/css" media="print" />
+    <link rel="icon" href="images/uag.ico" />
     <title>Schedule Searcher</title>
 </head>
 <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
@@ -18,7 +26,7 @@
         <!--<script src="path/to/jquery.easy-autocomplete.min.js"></script>-->
         <form id="a" onSubmit="return false;">
             <label for="studentName" class="label">Name:</label>
-            <input type="text" class="studentName" id="studentName" placeholder="Enter a name">
+            <input type="text" class="studentName" id="studentName" placeholder="Enter a name" size=20 autocorrect=off autocapitalize=words>
             <button type="button" class="btn" id="per-now">Now</button>
             <button type="button" class="period btn" data-tag="perA" id="per-A">A</button>
             <button type="button" class="period btn" data-tag="perB" id="per-B">B</button>
@@ -31,14 +39,10 @@
             <button type="button" class="period btn" data-tag="perFRed" id="per-FRed">FRed</button>
             <button type="button" class="period btn" data-tag="perGGrey" id="per-GGrey">GGrey</button>
             <button type="button" class="period btn" data-tag="perGRed" id="per-GRed">GRed</button>
-	        <button href="#" class="hint  hint--bottom" data-hint="<Help>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; Type in a student name in the text box to search &#x0a and add a student.&#x0a&#x0a&#8226; Students are entered with the enter key.&#x0a&#x0a&#8226; Click on any period to show the class a student is in &#x0a during that period.&#x0a&#x0a&#8226; The now button toggles on the current periods.&#x0a&#x0a&#8226; The remove button deletes all instances of a student.&#x0a&#x0a <Features>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; The tables are arranged by class so students are easier&#x0a to see if they have the same class. &#x0a&#x0a&#8226; The autofill feature in the text box activates after the first &#x0a two letters of a name are entered. &#x0a&#x0a&#8226; Mobile Version Coming soon."id="help">?</button>
+	        <button href="#" class="hint  hint--bottom" id="help" data-hint="<Help>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; Type in a student name in the text box to search &#x0a and add a student.&#x0a&#x0a&#8226; Students are entered with the enter key.&#x0a&#x0a&#8226; Click on any period to show the class a student is in &#x0a during that period.&#x0a&#x0a&#8226; The now button toggles on the current periods.&#x0a&#x0a&#8226; The remove button deletes all instances of a student.&#x0a&#x0a <Features>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; The tables are arranged by class so students are easier&#x0a to see if they have the same class. &#x0a&#x0a&#8226; The autofill feature in the text box activates after the first &#x0a two letters of a name are entered. &#x0a&#x0a&#8226; Mobile Version Coming soon.">?</button>
             </form>
         </div>
     </header>
-    
-    <br><br>
-    <br><br>
-
     <script type="text/javascript" src="lib.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
 </body>
