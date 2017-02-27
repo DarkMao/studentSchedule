@@ -53,7 +53,12 @@ $.getJSON('data.json', function(data) {
             var studentObj = data.filter(entry => entry.id === studentNameGrade)[0];
             console.log(studentNameGrade);
                 if (studentNameGrade === "Jeffrey Richiez 12" && wasjeff == false) {
-                    swal("WOOOAH");
+                    swal({
+                        title: "Added Creator",
+                        text: "",
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
                     barrel();
                     wasjeff= true;
                 }
@@ -166,20 +171,6 @@ $('#per-now').click(function() {
         generateTables(per, namesGrades, selected);
     })
 });
-
-// $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
-// var amountScrolled = 300;
-
-// $(window).scroll(function() {
-// 	if ( $(window).scrollTop() > amountScrolled ) {
-// 		$('a.back-to-top').fadeIn('slow');
-// 	} else {
-// 		$('a.back-to-top').fadeOut('slow');
-// 	}
-// });
-// $('back-to-top').click(function() {
-// 	$("html, body").animate({ scrollTop: 0 }, 600); 
-// });
 // ===== Scroll to Top ==== 
 $(window).scroll(function() {
     if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px

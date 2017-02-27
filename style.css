@@ -22,6 +22,7 @@
 	padding:7px 25px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #810e05;
+	
 }
 .but:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24437), color-stop(1, #c62d1f));
@@ -448,9 +449,13 @@ div{
     font-size: 12px;
     line-height: 12px;
     white-space: pre;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); 
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); 
   }
-
+@-webkit-keyframes greenPulse {
+  from { background-color: #39a393; -webkit-box-shadow: 0 0 9px #08ccc8; }
+  50% { background-color: #5ef2dc; -webkit-box-shadow: 0 0 18px #14ffa8; }
+  to { background-color: #39a393; -webkit-box-shadow: 0 0 9px #08ccc8; }
+}
 #help{
   outline:none !important;
   width: 30px;
@@ -462,8 +467,10 @@ div{
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+  -webkit-animation-name: greenPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: 3;
 }
 #help:hover{
   background-color: rgb(56, 56, 56);
 }
-
