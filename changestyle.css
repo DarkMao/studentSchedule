@@ -1,0 +1,205 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.2.0/katex.min.css';
+body {
+    margin: 0
+}
+a {
+    background: 0 0;
+    text-decoration: none;
+}
+a:active,
+a:hover {
+    outline: 0;
+}
+b,
+strong {
+    font-weight: 700;
+}
+
+dfn {
+    font-style: italic;
+}
+
+h1 {
+    margin: .67em 0;
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
+}
+html {
+    font-size: .875em;
+    background: #fff;
+    color: #373D49
+}
+
+html,
+body {
+    font-family: Georgia, Cambria, serif;
+    height: 100%
+}
+
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2rem
+}
+
+ul,
+ol {
+    margin-bottom: .83999rem;
+    padding-top: .16001rem
+}
+
+li {
+    -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    margin-left: 1rem
+}
+
+li>ul,
+li>ol {
+    margin-bottom: 0
+}
+
+p {
+    -webkit-font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    margin-top: 0
+}
+
+p
+pre {
+    margin-bottom: 1.33999rem
+}
+
+pre {
+    font-size: 1rem;
+    padding: .66001rem 9.5px 9.5px;
+    line-height: 2rem;
+    background: -webkit-linear-gradient(top, #fff 0, #fff .75rem, #f5f7fa .75rem, #f5f7fa 2.75rem, #fff 2.75rem, #fff 4rem);
+    background: linear-gradient(to bottom, #fff 0, #fff .75rem, #f5f7fa .75rem, #f5f7fa 2.75rem, #fff 2.75rem, #fff 4rem);
+    background-size: 100% 4rem;
+    border-color: #D3DAEA
+}
+
+blockquote {
+    margin: 0
+}
+
+blockquote p {
+    font-size: 1rem;
+    margin-bottom: .33999rem;
+    font-style: italic;
+    padding: .66001rem 1rem 1rem;
+    border-left: 3px solid #A0AABF
+}
+
+th,
+td {
+    padding: 12px
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 0
+}
+
+h1 {
+    line-height: 3rem;
+    font-size: 2.0571429rem;
+    margin-bottom: .21999rem;
+    padding-top: .78001rem
+}
+
+h2 {
+    font-size: 1.953125rem;
+    margin-bottom: .1835837rem;
+    padding-top: .8164163rem
+}
+
+h2,
+h3 {
+    line-height: 3rem
+}
+
+h3 {
+    font-size: 1.6457143rem;
+    margin-bottom: .07599rem;
+    padding-top: .92401rem
+}
+
+h4 {
+    font-size: 1.5625rem;
+    margin-bottom: .546865rem;
+    padding-top: .453135rem
+}
+
+h5 {
+    font-size: 1.25rem;
+    margin-bottom: -.56251rem;
+    padding-top: .56251rem
+}
+
+h6 {
+    font-size: 1rem;
+    margin-bottom: -.65001rem;
+    padding-top: .65001rem
+}
+
+a {
+    cursor: pointer;
+    color: #35D7BB;
+    text-decoration: none
+}
+
+a:hover,
+a:focus {
+    border-bottom-color: #35D7BB;
+    color: #dff9f4
+}
+
+a {
+    color:#8BB1FF !important;
+    text-decoration: none !important;
+    -webkit-transition: color .5s linear;
+    -moz-transition: color .5s linear;
+    -ms-transition: color .5s linear;
+    -o-transition: color .5s linear;
+    transition: color .5s linear;
+}
+a:hover {
+    color: #538FDE!important;
+}
+.Inner{
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    height: auto;
+    margin-top: -480px;
+    /* half of you height */
+    width: 900px;
+    margin-left: -200px;
+    /* half of you width */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 70px;
+    padding: 25px 50px 25px 50px;
+}
+.Outer{
+    width:900px;
+}
+.ver{
+    color: blue !important;
+}
+#initial{
+    right:20px;
+}

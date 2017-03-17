@@ -23,6 +23,9 @@ th{ border:1px solid black; font-size:14px;}
 table td:last-child {display:none}/* removes the remove button */
 table th:last-child {display:none}/* removes the remove button */
 body { padding-top: 0; }
+a{
+    display:none;
+}
 
 /*added just in case*/
 table {

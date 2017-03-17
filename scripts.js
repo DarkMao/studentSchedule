@@ -4,9 +4,9 @@
 function generateTableHead(per) {
     var title = ['First Name', 'Last Name', 'Grade', 'Room', 'Class', 'Teacher', 'Remove'];
     var width = ["15", "15", "10", "10", "25", "25"];
-    var html = `<tr class="thead-inverse"><th rowspan="100%" id="rowSpanper" style="vertical-align:middle;">${per}</th>`;
+    var html = `<tr class="thead-inverse"><th rowspan="100%" class="rowSpanper" id="span${per}"style="vertical-align:middle;"><div class="period-header" id="head${per}">${per}</div></th>`;
     for (var x = 0; x < title.length; x++) {
-        html += `<th style="width:${width[x]}%;">${title[x]}</th>`;
+        html += `<th style="width:${width[x]}%;">${title[x]} </th>`;
     }
     html += ""
     return html;
@@ -36,11 +36,24 @@ var selected = [];
 $.getJSON('directoryfinal.json', function(data) {
     dir = data;
 });
-
+console.log(selected);
 function barrel() {
     var css = document.createElement('style');
     css.type = 'text/css';
     css.innerHTML = '@keyframes roll {100%  {transform:rotate(360deg)}}@-moz-keyframes roll{100%25{-moz-transform:rotate(360deg);}}@-o-keyframes roll{100%25{-o-transform:rotate(360deg);}}@-webkit-keyframes roll{100%25{-webkit-transform:rotate(360deg);}}body{-moz-animation-name:roll;-moz-animation-duration:4s;-moz-animation-iteration-count:1;-o-animation-name:roll;-o-animation-duration:4s;-o-animation-iteration-count:1;-webkit-animation-name:roll;-webkit-animation-duration:4s;-webkit-animation-iteration-count:1;}';
+    document.getElementsByTagName('head')[0].appendChild(css)
+    return css.innerHTML;
+}
+function tableglow(per){
+    var css = document.createElement('style');
+    css.type = 'text/css';
+    css.innerHTML = `@-webkit-keyframes greenPulse {
+    from { background-color: #39a393;}
+    50% { background-color: #5ef2dc;}
+    to { background-color: #39a393;}} 
+    #span${per},#head${per}{  -webkit-animation-name: greenPulse;
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count: 2;`;
     document.getElementsByTagName('head')[0].appendChild(css)
     return css.innerHTML;
 }
@@ -132,7 +145,6 @@ var times = [{
     start: [11, 31],
     end: [12, 18]
 }];
-
 $('#per-now').click(function() {
     var now = new Date();
     var day = now.getDay() - 1;
@@ -156,13 +168,19 @@ $('#per-now').click(function() {
             if (time.per === "F") {
                 currentPeriods.push("FRed");
                 currentPeriods.push("FGrey");
+                tableglow("FRed");
+                tableglow("FGrey");
             }
             if (time.per === "G") {
                 currentPeriods.push("GRed");
                 currentPeriods.push("GGrey");
+                tableglow("GRed");
+                tableglow("GGrey");
             }
             currentPeriods.push(time.per);
+            tableglow(time.per);
         }
+        
     });
     currentPeriods.forEach(function(per) {
         $('#per-' + per).addClass('clicked');
@@ -173,7 +191,7 @@ $('#per-now').click(function() {
 });
 // ===== Scroll to Top ==== 
 $(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+    if ($(this).scrollTop() >= 80) { // If page is scrolled more than 50px
         $('#return-to-top').fadeIn(200); // Fade in the arrow
     }
     else {
@@ -185,3 +203,11 @@ $('#return-to-top').click(function() { // When arrow is clicked
         scrollTop: 0 // Scroll to top of body
     }, 500);
 });
+ $('body').on('click', '#nuke', function() {
+     if (confirm('Delete all students in the table?')) {
+      selected = [];   
+     }
+     else {
+         // Do nothing!
+     }
+ });

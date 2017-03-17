@@ -19342,5 +19342,49 @@
                 "teacher": "Manning, Ms"
             }
         }
+    },
+    {
+        "firstname": "Fardin",
+        "grade": "10",
+        "id": "Fardin Zishan 10",
+        "lastname": "Zishan",
+        "schedule": {
+            "per": {
+                "subject": "MP2",
+                "teacher": "Traversa, Mr"
+            },
+            "perA": {
+                "subject": "English 10",
+                "teacher": "Nelson, Ms"
+            },
+            "perB": {
+                "subject": "Algebra II",
+                "teacher": "Salvato, Mr"
+            },
+            "perC": {
+                "subject": "AP Chemistry",
+                "teacher": "Gayatinea, Ms"
+            },
+            "perD": {
+                "subject": "Global History I/II",
+                "teacher": "Lawrence, William"
+            },
+            "perE": {
+                "subject": "Global History I/II",
+                "teacher": "Lawrence, William"
+            },
+            "perFGrey": {
+                "subject": "Health",
+                "teacher": "Gruszka, Mr"
+            },
+            "perFRed": {
+                "subject": "Phys Ed",
+                "teacher": "Cassano, Vito Anthony"
+            },
+            "perG": {
+                "subject": "Digital Design I",
+                "teacher": "Morales, Tiffanie"
+            }
+        }
     }
 ]

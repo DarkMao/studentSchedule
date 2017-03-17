@@ -3,22 +3,26 @@ import pprint
 import json
 
 pp = pprint.PrettyPrinter(indent=2)
+FILENAME = 'datasetfinal.csv'
+
+with open(FILENAME, "a") as myfile:
+    myfile.write('\n,END,END,,,,,,,,,,,')
 
 def create_dictionaries():
     students = []
-    with open('datasetfinal.csv') as f:
+    with open(FILENAME) as f:
         reader = csv.reader(f)
         
         #this works under the assumption that student names are grouped together
         prevID = ""
         current_dict = {}
-        
         for row in reader:
             fname = row[1]
             lname = row[2]
             grade = row[10]
+            last_line = fname == "END" and lname == "END"
             currentID = "{}{}{}".format(fname,lname,grade)
-            if currentID != prevID:
+            if currentID != prevID or last_line:
                 students.append(current_dict)
                 current_dict = {
                     "id": "{} {} {}".format(fname,lname,grade),
@@ -41,7 +45,6 @@ def create_dictionaries():
             
     # for x in range(10):
     #     pp.pprint(students[x])
-    print (students)
     return students
 
 data = create_dictionaries()

@@ -20,8 +20,8 @@ function generateTables(perString,namesGrades,selected) {
         if (showPeriods[perFull]) {
             console.table(selected);
             selected.sort(function (a, b){
-                var class1 = perFull in a.schedule ? a.schedule[perFull].subject : "";
-                var class2 = perFull in b.schedule ? b.schedule[perFull].subject : "";
+                var class1 = perFull in a.schedule ? a.schedule[perFull].subject + a.schedule[perFull].teacher : "";
+                var class2 = perFull in b.schedule ? b.schedule[perFull].subject + b.schedule[perFull].teacher : "";
                 return class1 > class2 ? 1 : -1;
             });
             console.table(selected);

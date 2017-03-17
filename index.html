@@ -1,11 +1,14 @@
 <html>
 <head>
-<!-- __      .___  ___.      ___        ______   -->
-<!--|  |     |   \/   |     /   \      /  __  \  -->
-<!--|  |     |  \  /  |    /  ^  \    |  |  |  | -->
-<!--|  |     |  |\/|  |   /  /_\  \   |  |  |  | -->
-<!--|  `----.|  |  |  |  /  _____  \  |  `--'  | -->
-<!--|_______||__|  |__| /__/     \__\  \______/  -->
+    <!--https://internetingishard.com/html-and-css/responsive-design/-->
+    <!-- __      .___  ___.      ___        ______   -->
+    <!--|  |     |   \/   |     /   \      /  __  \  -->
+    <!--|  |     |  \  /  |    /  ^  \    |  |  |  | -->
+    <!--|  |     |  |\/|  |   /  /_\  \   |  |  |  | -->
+    <!--|  `----.|  |  |  |  /  _____  \  |  `--'  | -->
+    <!--|_______||__|  |__| /__/     \__\  \______/  -->
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
@@ -20,31 +23,38 @@
     <title>Student Lookup</title>
 </head>
 <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
 <body>
     <header>
-        <div class ="Fixed">
-        <!--<script src="path/to/jquery.easy-autocomplete.min.js"></script>-->
-        <form id="a" onSubmit="return false;">
-            <label for="studentName" class="label">Name:</label>
-            <input type="text" class="studentName" id="studentName" placeholder="Enter a name" size=20 autocorrect=off autocapitalize=words>
-            <button type="button" class="btn" id="per-now">Now</button>
-            <button type="button" class="period btn" data-tag="perA" id="per-A">A</button>
-            <button type="button" class="period btn" data-tag="perB" id="per-B">B</button>
-            <button type="button" class="period btn" data-tag="perC" id="per-C">C</button>
-            <button type="button" class="period btn" data-tag="perD" id="per-D">D</button>
-            <button type="button" class="period btn" data-tag="perE" id="per-E">E</button>
-            <button type="button" class="period btn" data-tag="perF" id="per-F">F</button>
-            <button type="button" class="period btn" data-tag="perG" id="per-G">G</button>
-            <button type="button" class="period btn" data-tag="perFGrey" id="per-FGrey">FGrey</button>
-            <button type="button" class="period btn" data-tag="perFRed" id="per-FRed">FRed</button>
-            <button type="button" class="period btn" data-tag="perGGrey" id="per-GGrey">GGrey</button>
-            <button type="button" class="period btn" data-tag="perGRed" id="per-GRed">GRed</button>
-	        <button href="#" class="hint  hint--bottom" id="help" data-hint="<Help>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; Type in a student name in the text box to search &#x0a and add a student.&#x0a&#x0a&#8226; Students are entered with the enter key.&#x0a&#x0a&#8226; Click on any period to show the class a student is in &#x0a during that period.&#x0a&#x0a&#8226; The now button toggles on the current periods.&#x0a&#x0a&#8226; The remove button deletes all instances of a student.&#x0a&#x0a <Features>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; The tables are arranged by class so students are easier&#x0a to see if they have the same class. &#x0a&#x0a&#8226; The autofill feature in the text box activates after the first &#x0a two letters of a name are entered. &#x0a&#x0a&#8226; Dynamic Updates(Tables update live on student addition)&#x0a&#x0a&#8226; &#x2605Printing is now available!&#x2605 &#x0a&#x0a&#8226;Mobile Version Coming soon.">?</button>
+        <div class="Fixed">
+            <!--<script src="path/to/jquery.easy-autocomplete.min.js"></script>-->
+            <form id="a" onSubmit="return false;">
+                <div id="cont" >
+                    <label for="studentName" class="label">Name:</label>
+                    <input type="text" class="studentName" id="studentName" placeholder="Enter a name" size=20 autocorrect=off autocapitalize=words>
+                    <button type="button" class="btn" id="per-now">Now</button>
+                    <button type="button" class="period btn" data-tag="perA" id="per-A">A</button>
+                    <button type="button" class="period btn" data-tag="perB" id="per-B">B</button>
+                    <button type="button" class="period btn" data-tag="perC" id="per-C">C</button>
+                    <button type="button" class="period btn" data-tag="perD" id="per-D">D</button>
+                    <button type="button" class="period btn" data-tag="perE" id="per-E">E</button>
+                    <button type="button" class="period btn" data-tag="perF" id="per-F">F</button>
+                    <button type="button" class="period btn" data-tag="perG" id="per-G">G</button>
+                    <button type="button" class="period btn" data-tag="perFGrey" id="per-FGrey">FGrey</button>
+                    <button type="button" class="period btn" data-tag="perFRed" id="per-FRed">FRed</button>
+                    <button type="button" class="period btn" data-tag="perGGrey" id="per-GGrey">GGrey</button>
+                    <button type="button" class="period btn" data-tag="perGRed" id="per-GRed">GRed</button>
+                    <button href="#" class="hint  hint--bottom" id="help" data-hint="<Help>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; Type in a student name in the text box to search &#x0a and add a student.&#x0a&#x0a&#8226; Students are entered with the enter key.&#x0a&#x0a&#8226; Click on any period to show the class a student is in &#x0a during that period.&#x0a&#x0a&#8226; The now button toggles on the current periods.&#x0a&#x0a&#8226; The remove button deletes all instances of a student.&#x0a&#x0a <Features>&#x0a-----------------------------------------------------------------------------&#x0a&#8226; The tables are arranged by class so students are easier&#x0a to see if they have the same class. &#x0a&#x0a&#8226; The autofill feature in the text box activates after the first &#x0a two letters of a name are entered. &#x0a&#x0a&#8226; Dynamic Updates(Tables update live on student addition)&#x0a&#x0a&#8226; &#x2605 Printing is now available! &#x2605 &#x0a&#x0a&#8226; &#x2605 Change Log Available &#x2605 &#x0a&#x0a&#8226; Mobile Version Coming soon.">?</button>
+                    <button type="button" class="but nukestyle" id="nuke">Nuke</button>
+                    <!--03/06/17-->
+                </div>
             </form>
         </div>
     </header>
     <script type="text/javascript" src="lib.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
+
 </body>
+<div class="footer">&copy; Copyright 2017, Jeffrey Richiez <a id="version">Version 1.2</a><a href="change.html" id="change"> Change Log</a></div>
 
 </html>
