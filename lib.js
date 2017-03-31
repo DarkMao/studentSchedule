@@ -1,5 +1,5 @@
 /* global per */
-
+/*global showPeriods*/
 //perString will be "A", "B", etc.. or "ALL"
 function generateTables(perString,namesGrades,selected) {
     var periodsToGenerate = [];
@@ -18,18 +18,18 @@ function generateTables(perString,namesGrades,selected) {
         var tableHTML = "<tbody>";
         var table = $("#table" + per)[0];
         if (showPeriods[perFull]) {
-            console.table(selected);
+            // console.table(selected);
             selected.sort(function (a, b){
                 var class1 = perFull in a.schedule ? a.schedule[perFull].subject + a.schedule[perFull].teacher : "";
                 var class2 = perFull in b.schedule ? b.schedule[perFull].subject + b.schedule[perFull].teacher : "";
                 return class1 > class2 ? 1 : -1;
             });
-            console.table(selected);
+            // console.table(selected);
             tableHTML += generateTableHead(per);
             for (var i = 0; i < selected.length; i++) {
                 if (selected[i].schedule[perFull]) {
                     var key = selected[i].schedule[perFull].subject+selected[i].schedule[perFull].teacher;
-                    console.log(key);
+                    // console.log(key);
                     tableHTML += ("<tr><td scope=\"row\">" +
                         selected[i].firstname + "</td><td>" + selected[i].lastname + "</td><td>" +
                         selected[i].grade + "</td><td>"+dir[key]+"</td><td>" + selected[i].schedule[perFull].subject +
@@ -41,6 +41,19 @@ function generateTables(perString,namesGrades,selected) {
                 // console.log(showPeriods);
             }
         }
+        marginedit();
         table.innerHTML = tableHTML + "</tbody>";
     });
+}
+
+function marginedit() {
+    var periods = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'FGrey', 'FRed', 'GGrey', 'GRed'];
+    for (var x = 0; x < periods.length; x++) {
+        if (!showPeriods["per" + periods[x]]) {
+            $(`#table${periods[x]}`).addClass('no-margin');
+        }
+        else{
+            $(`#table${periods[x]}`).removeClass('no-margin');
+        }
+    }
 }

@@ -107,7 +107,7 @@ div.table-title {
   border-radius:3px;
   border-collapse: collapse;
   height: 320px;
-  margin: auto;
+  margin: 0;
   max-width: 600px;
   padding:5px;
   width: 100%;
@@ -278,7 +278,7 @@ td.text-right {
 .btn:focus {
     outline:none !important;
 }
-div{
+.fixed{
   background-color:rgba(113,187,208,0.95);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#71bbd0', endColorstr='#4aa6bf', GradientType=1);
   width:100%;
@@ -469,6 +469,11 @@ div{
   50% { background-color: #5ef2dc; -webkit-box-shadow: 0 0 18px #14ffa8; }
   to { background-color: #39a393; -webkit-box-shadow: 0 0 9px #08ccc8; }
 }
+@-webkit-keyframes bluePulse {
+  from { background-color: #39a393; -webkit-box-shadow: 0 0 9px #08ccc8; }
+  50% { background-color: #5ef2dc; -webkit-box-shadow: 0 0 18px #14ffa8; }
+  to { background-color: #71bbd0; -webkit-box-shadow: 0 0 9px #6bc6e0; }
+}
 #help{
   outline:none !important;
   width: 30px;
@@ -481,8 +486,8 @@ div{
   line-height: 1.428571429;
   border-radius: 15px;
   -webkit-animation-name: greenPulse;
-  -webkit-animation-duration: .5s;
-  -webkit-animation-iteration-count: 3;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: 1;
 }
 #help:hover{
   background-color: rgb(56, 56, 56);
@@ -514,6 +519,9 @@ body {
   text-align: center;
   padding: 2px 2px 2px 2px;
   font-size: 12px;
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 9s;
+  -webkit-animation-iteration-count: 1;
 
 }
 #change{
@@ -572,6 +580,7 @@ a{
 .page {
   display: flex;
   flex-wrap: wrap;
+  margin:30px;
 }
 
 .section {
@@ -653,4 +662,8 @@ a{
 
 .form-row label {
   margin-bottom: 15px;
+}                                                 
+
+.no-margin{
+  margin: 0 !important;
 }
